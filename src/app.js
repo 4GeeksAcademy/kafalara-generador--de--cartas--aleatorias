@@ -34,7 +34,7 @@ window.onload = function() {
     club: "♣"
   };
 
-  //DOM document.getElementById
+  //DOM document.getElementById - obtener los elementos por su ID
   let cardValue = document.getElementById("card-value");
   let topPalos = document.getElementById("top-palos");
   let belowPalos = document.getElementById("below-palos");
@@ -44,14 +44,25 @@ window.onload = function() {
   let randomPalos = palos[Math.floor(Math.random() * palos.length)];
   let randomValue = value[Math.floor(Math.random() * value.length)];
 
+  // Asignar el valor (número/letra) y el símbolo del palo
   cardValue.innerHTML = randomValue;
   topPalos.innerHTML = symbols[randomPalos];
   belowPalos.innerHTML = symbols[randomPalos];
+
+  // Asignar color al palo rojo para corazones y diamantes, negro para picas y tréboles pero no sumo a los palos (values) ya que es aleatorio.
+  if (randomPalos === "heart" || randomPalos === "diamond") {
+    topPalos.style.color = "red";
+    belowPalos.style.color = "red";
+  } else {
+    topPalos.style.color = "black";
+    belowPalos.style.color = "black";
+  }
 
   console.log(Math.random());
   console.log(randomPalos);
   console.log(randomValue);
 
+  // Agregar la clase correspondiente al palo
   card.classList.add(randomPalos);
 
   //intervalo de 10 segundos -> setInterval
